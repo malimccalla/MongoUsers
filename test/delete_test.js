@@ -10,39 +10,28 @@ describe('Deleting a user', () => {
       .then(() => done());
   });
 
-  it('model instance remove', (done) => {
-    mali.remove()
+  function assertDeletion(operation, done) {
+    operation
       .then(() => User.findOne({ name: 'Mali' })
       .then((user) => {
         assert(user === null);
         done();
       }));
+  }
+
+  it('model instance remove', (done) => {
+    assertDeletion(mali.remove(), done);
   });
 
   it('class method remove', (done) => {
-    User.remove({ name: 'Mali' })
-      .then(() => User.findOne({ name: 'Mali' })
-      .then((user) => {
-        assert(user === null);
-        done();
-      }));
+    assertDeletion(User.remove({ name: 'Mali' }), done);
   });
 
   it('class method findAndRemove', (done) => {
-    User.findOneAndRemove({ name: 'Mali' })
-      .then(() => User.findOne({ name: 'Mali' })
-      .then((user) => {
-        assert(user === null);
-        done();
-      }));
+    assertDeletion(User.findOneAndRemove({ name: 'Mali' }), done);
   });
 
   it('class method findByIdAndRemove', (done) => {
-    User.findOneAndRemove(mali.id)
-      .then(() => User.findOne({ name: 'Mali' })
-      .then((user) => {
-        assert(user === null);
-        done();
-      }));
+    assertDeletion(User.findOneAndRemove(mali.id), done);
   });
 });
