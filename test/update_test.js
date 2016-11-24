@@ -52,7 +52,7 @@ describe('Updating records', () => {
     );
   });
 
-  it('Increments a users post count by 1', (done) => {
+  xit('Increments a users post count by 1', (done) => {
     User.update({ name: 'Mali' }, { $inc: { postCount: 1 } })
       .then(() => User.findOne({ name: 'Mali' }))
       .then((user) => {
