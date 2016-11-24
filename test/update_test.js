@@ -5,7 +5,7 @@ describe('Updating records', () => {
   let mali;
 
   beforeEach((done) => {
-    mali = new User({ name: 'Mali', postCount: 0 });
+    mali = new User({ name: 'Mali', followers: 0 });
     mali.save()
       .then(() => {
         done();
@@ -52,11 +52,11 @@ describe('Updating records', () => {
     );
   });
 
-  xit('Increments a users post count by 1', (done) => {
-    User.update({ name: 'Mali' }, { $inc: { postCount: 1 } })
+  it('Increments a users followers count by 1', (done) => {
+    User.update({ name: 'Mali' }, { $inc: { followers: 1 } })
       .then(() => User.findOne({ name: 'Mali' }))
       .then((user) => {
-        assert(user.postCount === 1);
+        assert(user.followers === 1);
         done();
       });
   });
