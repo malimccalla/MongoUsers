@@ -7,10 +7,10 @@ const BlogPostSchema = new Schema({
   content: String,
   comments: [{
     type: Schema.Types.ObjectId,
-    ref: 'Comment'
+    ref: 'comment'
   }]
 });
 
-const BlogPost = mongoose.model('blogPost', BlogPostSchema);
+const BlogPost = mongoose.model('blogpost', BlogPostSchema);
 
 module.exports = BlogPost;
