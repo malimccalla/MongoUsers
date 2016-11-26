@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const assert = require('assert');
 
 const User = require('../src/user');
@@ -24,11 +23,11 @@ describe('Associations', () => {
       .then(() => done());
   });
 
-  it.only('saves a realtation between a user and a blog post', (done) => {
+  it('saves a realtation between a user and a blog post', (done) => {
     User.findOne({ name: 'Mali' })
       .populate('blogPosts') // the property on user
       .then((user) => {
-        console.log(user);
+        assert(user.blogPosts[0].title === 'New Post');
         done();
       });
   });
