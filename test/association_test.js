@@ -26,6 +26,7 @@ describe('Associations', () => {
 
   it.only('saves a realtation between a user and a blog post', (done) => {
     User.findOne({ name: 'Mali' })
+      .populate('blogPosts') // the property on user
       .then((user) => {
         console.log(user);
         done();
