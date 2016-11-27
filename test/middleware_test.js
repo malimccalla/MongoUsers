@@ -1,10 +1,10 @@
-const mongoose = require('mongoose');
 const assert = require('assert');
 const User = require('../src/user');
 const BlogPost = require('../src/blogPost');
 
 describe('Middlware', () => {
-  let joe, blogPost;
+  let joe;
+  let blogPost;
 
   beforeEach((done) => {
     joe = new User({ name: 'Joe' });
